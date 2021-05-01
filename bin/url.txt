@@ -1,0 +1,39 @@
+    # replace path -----------------------------------------------------------
+    # return : replaced string
+    # notes  : name and time can be None for no replacement
+    # example time 2021-01-19, doy 19, week 2141-2, station JFNG
+    #          %stas        lowercase station name (jfng)
+    #          %STAS        uppercase station name (JFNG)
+    #          %acs         lowercase analysis center (igs)
+    #          %ACS         uppercase analysis center (IGS)
+    #          %YEAR        4 digit year           (2021)
+    #          %YY          2 digit year           (21)
+    #          %MO          2 digit month          (01)
+    #          %DOY         3 digit day of year    (019)
+    #          %WEEK        4 digit gps week       (2141)
+    #          %D           1 digit gps day of week(2)  
+    #          %IT          2 digit sample interval(05)  for mgex clk and sp3
+    # ------------------------------------------------------------------------
+
+# DATA
+IGS_OBS2= https://cddis.nasa.gov/archive/gnss/data/daily/%YEAR/%DOY/%YYd/%stas%DOY0.%YYd.*
+IGS_OBS3= https://cddis.nasa.gov/archive/gnss/data/daily/%YEAR/%DOY/%YYd/%STAS*%YEAR%DOY*.crx.gz
+IGS_NAV = https://cddis.nasa.gov/archive/gnss/data/daily/%YEAR/%DOY/%YYp/BRDC00IGS_R_%YEAR%DOY0000_01D_MN.rnx.gz
+
+# PRODUCTS
+ACS_ERP = https://cddis.nasa.gov/archive/gnss/products/%WEEK/%acs%YYP%WEEK.erp.Z
+ACS_SNX = https://cddis.nasa.gov/archive/gnss/products/%WEEK/%acs%YYP%WEEK.snx.Z
+ACS_TEC = https://cddis.nasa.gov/archive/gnss/products/ionex/%YEAR/%DOY/%acsg%DOY0.%YYi.Z
+ACS_ZPD = https://cddis.nasa.gov/archive/gnss/products/troposphere/zpd/%YEAR/%DOY/%stas%DOY0.%YYzpd.gz
+#ACS_CLK_MGEX = https://cddis.nasa.gov/archive/gnss/products/mgex/%WEEK/%ACS0MGXFIN_%YEAR%DOY0000_01D_%ITS_CLK.CLK.gz
+#ACS_EPH_MGEX = https://cddis.nasa.gov/archive/gnss/products/mgex/%WEEK/%ACS0MGXFIN_%YEAR%DOY0000_01D_%ITM_ORB.SP3.gz
+ACS_CLK_MGEX = https://cddis.nasa.gov/archive/gnss/products/%WEEK/%acs%WEEK%D.clk_30s.Z
+ACS_EPH_MGEX = https://cddis.nasa.gov/archive/gnss/products/%WEEK/%acs%WEEK%D.sp3.Z
+
+# DCB
+DCB_P1C1 = ftp.aiub.unibe.ch/CODE/%YEAR/P1C1%YY%MO.DCB.Z
+DCB_P1P2 = ftp.aiub.unibe.ch/CODE/%YEAR/P1P2%YY%MO.DCB.Z
+DCB_P2C2 = ftp.aiub.unibe.ch/CODE/%YEAR/P2C2%YY%MO_RINEX.DCB.Z
+
+# ANTEX
+IGS_ATX14 = ftp.aiub.unibe.ch/BSWUSER52/GEN/I14.ATX
